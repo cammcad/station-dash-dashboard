@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transfer Station Live Dashboard</title>
+  </head>
+  <body>
+    <h1>Transfer Stations</h1>
+    <div>
+      <ul id="Stations"></ul>
+    </div>
+    
+    <script type="text/javascript">
+      const {app} = require('./src/dashboard.js')
+      let s = document.getElementById("Stations");
+      const facilities = app();
+      facilities.forEach(facility => {
+        let item = document.createElement("li");
+        item.append(facility);
+        s.append(item);
+      });
+    </script>
+  </body>
+</html>

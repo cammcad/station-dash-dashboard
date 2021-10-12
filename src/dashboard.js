@@ -8,7 +8,11 @@ const convertTZ = (tzString) => (date) =>
     })
   );
 const convertHawaiiTZ = convertTZ("Pacific/Honolulu");
-
+const computeCurrentDateTime = () => {
+  let now = new Date();
+  return () => now;
+};
+const getCurrentDateTime = () => computeCurrentDateTime()();
 const getTime = (date) => {
   const hour = date.getHours();
   const dayOfWeek = date.getDay();
@@ -42,7 +46,7 @@ const openNow = (facility) =>
   Some(`${facility.name}: open now, closes at ${facility.close} pm`);
 
 const getDays = (x) => x.split("/").map(convertDayToInt); // split on the days field from Facility structure
-const byDay = (x) => x.includes(getDay(new Date()));
+const byDay = (x) => x.includes(getDay(getCurrentDateTime()));
 const isToday = compose(compose(byDay, getDays), prop("days"));
 
 const maybeOpenByDay = (facility) =>
@@ -64,7 +68,9 @@ const maybeOpenByHour = (time, facility) =>
 
 const isOpen = (facility) => {
   const res = maybeOpenByDay(facility);
-  return isNone(res) ? res : maybeOpenByHour(hawaiiTime(new Date()), facility);
+  return isNone(res)
+    ? res
+    : maybeOpenByHour(hawaiiTime(getCurrentDateTime()), facility);
 };
 
 const TransferStation = (x) => ({

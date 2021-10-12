@@ -26,5 +26,6 @@ const compose = (f, g) => (x) => f(g(x));
 const fromNullable = (x) => (x != null || undefined ? Some(x) : None(null));
 const id = (x) => x;
 const isNone = (x) => x.type === "None";
+const prop = (name) => (x) => x[name]; // get a property name
 
-module.exports = { Some, None, fromNullable, isNone, id, compose };
+module.exports = { Some, None, fromNullable, isNone, id, compose, prop };

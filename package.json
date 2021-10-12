@@ -1,4 +1,32 @@
 {
   "name": "dashboard",
-  "main": "index.html"
+  "main": "index.html",
+  "description": "Simple dashboard to display which transfer stations are currently open. This example can be ran on the cmd line with node.js or nw.js, the default assumes that nw.js is installed.",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "parcel index.html",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cammcad/station-dash-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cammcad/station-dash-dashboard/issues"
+  },
+  "homepage": "https://github.com/cammcad/station-dash-dashboard#readme",
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^8.1.0",
+    "parcel": "^1.12.3",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
 }
